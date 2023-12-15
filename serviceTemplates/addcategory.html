@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <link rel="stylesheet" href="serviceTemplates/css/addproduct.css">
+    
+</head>
+<body ng-controller="CategoryController">
+    <div ng-show="message">
+        {{ message }}
+    </div>
+    <form>
+        <label for="CategoryName">Category Name:</label>
+        <input type="text" id="CategoryName" name="CategoryName" ng-model="categoryName" required>
+
+        <button type="submit" ng-click="addCategory()">Submit</button>
+        <a href="#/services" class="services">Back</a>
+
+    </form>
+   
+    
+</body>
+</html>
+
+

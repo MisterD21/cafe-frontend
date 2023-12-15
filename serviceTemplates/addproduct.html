@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="serviceTemplates/css/addproduct.css">
+    
+</head>
+<body ng-controller="ProductController">
+    <div ng-show="message">
+        {{ message }}
+    </div>
+    <form>
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" ng-model="productName" required>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" ng-model="selectedCategory" ng-options="category.id as category.name for category in categories" required>
+            <option value="" disabled>Select a category</option>
+           
+        </select>
+
+        <label for="productDescription">Product Description:</label>
+        <input type="text" id="productDescription" name="productDescription" ng-model="productDescription" required>
+
+        <label for="productPrice">Product Price:</label>
+        <input type="text" id="productPrice" name="productPrice" ng-model="productPrice" pattern="\d+(\.\d{2})?" title="Price must be numeric (with optional 2 decimal places)" required>
+
+        <button type="submit" ng-click="add()">Submit</button>
+        <a href="#/services" class="services">Back</a>
+
+    </form>
+   
+    
+</body>
+</html>
+
+
