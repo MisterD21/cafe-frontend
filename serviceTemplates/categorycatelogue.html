@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <link rel="stylesheet" href="/serviceTemplates/css/productcatelogue.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category List</title>
+ 
+</head>
+<body class="categoryBody" ng-controller="CategoryCatelogueController">
+  <div class="categorycontainer" ng-show="showCategoryList">
+    <h1>category List</h1>
+    <div class="container" ng-if="message">
+        <p>{{message}}</p>
+      </div>
+    <table class="table table-striped"> 
+      <thead>
+        <tr>
+          <th>Category Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="category in categories.categories">
+          <td>{{ category.name }}</td>
+          <td><button ng-click="updateCategory(category)">Update</button></td>
+          <td><button ng-click="deleteCategory(category.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container" ng-show="categorys.length === 0">
+    <p>No categorys available.</p>
+  </div>
+
+  <div class="container" ng-show="showUpdateForm">
+    <div ng-show="message">
+        {{ message }}
+    </div>
+    <form ng-model="category">
+        <label for="categoryId">category id:</label>
+        <input type="number" id="categoryId" name="categoryId" value="{{category.category.id}}" ng-model="category.id" disabled>
+        <br>
+        <label for="categoryName">category Name:</label>
+        <input type="text" id="categoryName" name="categoryName" value="{{category.name}}" ng-model="category.name" required>
+        <br>
+        <button type="submit" ng-click="updateCategoryRest(category)">Update</button>
+        <button type="submit" ng-click="updateCategory(category)">Back</button>
+    </form>
+  </div>
+
+</body>
+</html>

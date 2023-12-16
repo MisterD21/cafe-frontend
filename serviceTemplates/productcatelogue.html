@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <link rel="stylesheet" href="/serviceTemplates/css/productcatelogue.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+ 
+</head>
+<body class="productBody" ng-controller="ProductCatelogueController">
+        
+  <div class="productcontainer" ng-show="showProductList">
+    <h1>Product List</h1>
+    <div class="container" ng-if="message">
+        <p>{{message}}</p>
+      </div>
+    <table class="table table-striped abc"> 
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category Name</th>
+          <th>Product Description</th>
+          <th>Product Price</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody class="tbodyScroll">
+        <tr ng-repeat="product in products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.category.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td><button ng-click="updateProduct(product)">Update</button></td>
+          <td><button ng-click="deleteProduct(product.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container" ng-show="products.length === 0">
+    <p>No products available.</p>
+  </div>
+
+  <div class="container" ng-show="showUpdateForm">
+    <div ng-show="message">
+        {{ message }}
+    </div>
+    <form ng-model="product">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" value="{{product.name}}" ng-model="product.name" required>
+        <br>
+        <label for="categoryId">category id: {{categoryId}}</label>
+        <input type="number" id="categoryId" name="categoryId" value="{{product.category.id}}" ng-model="product.category.id" disabled>
+        <br>
+        <label for="categoryName">category Name:</label>
+        <input type="text" id="categoryName" name="categoryName" value="{{product.category.name}}" ng-model="product.category.name" disabled>
+        <br>
+        <label for="productDescription">Product Description:</label>
+        <input type="text" id="productDescription" name="productDescription" value="{{product.description}}"  ng-model="product.description"required>
+        <br>
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" name="productPrice"  value="{{product.price}}" ng-model="product.price" pattern="\d+(\.\d{2})?" title="Price must be numeric (with optional 2 decimal places)" required>
+        <br>
+        <button type="submit" ng-click="updateProductRest(product)">Update</button>
+        <button type="submit" ng-click="updateProduct(product)">Back</button>
+    </form>
+  </div>
+
+</body>
+</html>

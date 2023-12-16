@@ -1,0 +1,45 @@
+ table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+tbody {
+  max-height: 150px; /* Set the maximum height for the visible rows */
+  overflow-y: auto;  /* Enable vertical scrolling if needed */
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Add styles for better visibility */
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
