@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <link rel="stylesheet" href="/serviceTemplates/css/billcatelogue.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bills List</title>
+ 
+</head>
+<body class="billBody" ng-controller="BillingListController">
+        
+  <div class="billcontainer" ng-show="showBillList">
+    <h1>Bills List</h1>
+    <div class="container" ng-if="message">
+        <p>{{message}}</p>
+      </div>
+    <table class="table table-striped abc"> 
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Customer Mobile no</th>
+          <th>Time Played in minutes</th>
+          <th>quantity</th>
+          <th>Final Price</th>
+          <th>Paymeny Mode</th>
+          <th>createdOn</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody class="tbodyScroll">
+        <tr ng-repeat="bill in bills">
+          <td>{{ bill.customerName }}</td>
+          <td>{{ bill.customerMobileNo }}</td>
+          <td>{{ bill.timePlayedInMins }}</td>
+          <td>{{ bill.quantity }}</td>
+          <td>{{ bill.finalPrice }}</td>
+          <td>{{ bill.paymentMode }}</td>
+          <td>{{ bill.createdOn }}</td>
+          <td><button ng-click="deleteBills(bill.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container" ng-show="bills.length === 0">
+    <p>No bills available.</p>
+  </div>
+
+</body>
+</html>

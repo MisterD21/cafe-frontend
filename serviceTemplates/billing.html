@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="serviceTemplates/css/addproduct.css">
+    
+</head>
+<body ng-controller="BillingController">
+    <div ng-show="message">
+        {{ message }}
+    </div>
+    <form>
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customerName" ng-model="customerName" required>
+        
+        <label for="customerMobile">Customer Mobile Number:</label>
+        <input type="number" id="customerMobile" name="customerMobile" ng-model="customerMobile" required>
+
+        <label for="category">Category:</label>
+<select id="category" name="category" ng-model="selectedCategory" ng-options="category.id as category.name for category in categories" ng-change="updateProducts()" required>
+  <option value="" disabled>Select a category</option>
+</select>
+
+<label for="product">Product:</label>
+<select id="product" name="product" ng-model="selectedproduct" ng-options="product.id as product.name for product in products" required>
+  <option value="" disabled>Select a product</option>
+</select>
+
+    <div ng-show="selectedCategory === 9">
+        <label for="productPPM">Time Played(in mins):</label>
+        <input type="text" id="productPPM" name="productPPM" ng-model="productPPM" ng-change="calculateFinalPriceGames(selectedproduct)" required>
+    </div>
+
+    <div ng-show="!(selectedCategory === 9)">
+        <label for="quantity">Quantity:</label>
+        <input type="quantity" id="quantity" name="quantity" ng-model="quantity" ng-change="calculateFinalPrice(selectedproduct)" required>
+    </div>
+       
+        <label for="finalPrice">Final Price:</label>
+        <input type="number" id="finalPrice" name="finalPrice" ng-model="finalPrice"  disabled>
+
+
+        <label for="paymentMode">Payment Mode:</label>
+        <select id="paymentMode" name="paymentMode" ng-model="paymentMode" required>
+            <option value="" disabled>Select a category</option>
+            <option value="PhonePay" >PhonePay</option>
+            <option value="Cash" >Cash</option>
+            <option value="Card" >Card</option>
+            <option value="Paytm" >Paytm</option>
+            <option value="Others" >Others</option>
+
+          </select>
+
+        <button type="submit" ng-click="addBill()">Submit</button>
+        <a href="#/services" class="services">Back</a>
+
+    </form>
+   
+    
+</body>
+</html>
+
+
